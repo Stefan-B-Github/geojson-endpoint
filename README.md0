@@ -1,0 +1,76 @@
+
+# keycloak-spring-boot-rest-example
+A Keycloak Spring Boot REST example
+
+upgraded, but without working spring security
+
+## Build
+
+    mvn clean compile
+
+## Run
+
+    docker-compose up -d
+
+    mvn spring-boot:run
+
+## Stop
+
+    docker-compose down -v
+
+## Examples
+
+Security with Keycloak
+
+UI
+
+    http://localhost:8082/
+
+    user: admin password: admin
+
+    realm conf/keycloak-realm.jspm is already imported 
+
+Get access token - simple user
+
+    export access_token=$(\
+    curl -X POST 'http://localhost:8082/realms/geojsonapp/protocol/openid-connect/token' \
+     --header 'Content-Type: application/x-www-form-urlencoded' \
+     --data-urlencode 'grant_type=password' \
+     --data-urlencode 'client_id=app-geojson' \
+     --data-urlencode 'client_secret=secret' \
+     --data-urlencode 'username=alice' \
+     --data-urlencode 'password=alice' | jq --raw-output '.access_token' \
+     )
+
+Decode the access_token using https://jwt.io.
+
+    echo $access_token
+
+unauthorized rest request
+
+    curl -v http://localhost:8081/admin \
+
+authorized rest request
+
+    curl http://localhost:8081/user \
+      -H "Authorization: Bearer $access_token"
+
+Get access token - admin
+
+    export access_token=$(\
+    curl -X POST 'http://localhost:8082/realms/geojsonapp/protocol/openid-connect/token' \
+     --header 'Content-Type: application/x-www-form-urlencoded' \
+     --data-urlencode 'grant_type=password' \
+     --data-urlencode 'client_id=app-geojson' \
+     --data-urlencode 'client_secret=secret' \
+     --data-urlencode 'username=jdoe' \
+     --data-urlencode 'password=jdoe' | jq --raw-output '.access_token' \
+     )
+
+authorized rest request
+
+    curl http://localhost:8081/admin \
+      -H "Authorization: Bearer $access_token"
+
+## Keycloak
+https://www.keycloak.org/documentation

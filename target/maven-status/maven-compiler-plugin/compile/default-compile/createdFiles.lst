@@ -1,3 +1,3 @@
-com/stefan/geojsonendpoint/controller/GeoJsonEndpointController.class
-com/stefan/geojsonendpoint/entity/GeoJsonFootprint.class
-com/stefan/geojsonendpoint/EndPointApplication.class
+com/stefan/geojsontest/springboot/rest/classes/KeycloakSecurityConfig.class
+com/stefan/geojsontest/springboot/rest/classes/KeycloakExampleController.class
+com/stefan/geojsontest/springboot/rest/classes/geojsonapp.class

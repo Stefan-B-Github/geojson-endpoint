@@ -1,20 +1,15 @@
-# Spring Boot configuration
-spring:
-  profiles:
-    active: development
-# Logger configuration
-logging:
-  pattern:
-    console: "%d %-5level %logger : %msg%n"
-  level:
-    org.springframework: INFO
-    org.hibernate: DEBUG
-# Server configuration
+keycloak:
+  auth-server-url: http://localhost:8181/auth
+  realm: geojsonapp
+  ssl-required: external
+  resource: app-geojson
+  credentials:
+    secret: secret
+  bearer-only: true
+
 server:
-  port: 8080
-  sessionTimeout: 30
-# Security configuration
-security:
-  user:
-    name: user
-password: user
+  port : 8081
+  
+spring:
+  application:
+    name: geojsonapp
