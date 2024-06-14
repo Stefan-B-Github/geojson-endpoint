@@ -9,11 +9,14 @@
   "users": [
     {
       "username": "example_user",
+      "firstName": "Example",
+      "lastName": "User",
+      "email": "email@example.com",
       "enabled": true,
       "credentials": [
         {
           "type": "password",
-          "value": "adminadmin"
+          "value": "userpassword"
         }
       ],
       "realmRoles": [
@@ -53,7 +56,7 @@
       "redirectUris": [
         "http://localhost:8081/*"
       ],
-      "secret": "secret",
+      "secret": "secretValue",
       "directAccessGrantsEnabled": true,
       "authorizationServicesEnabled": true,
       "authorizationSettings": {
